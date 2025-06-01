@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CUFFI - Submit Issue</title>
+  <link rel="stylesheet" href="/static/css/styles.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+  <h1>Report a Civic Issue</h1>
+  <div id="map" style="height: 300px;"></div>
+  <form id="issue-form">
+    <label for="description">Description:</label><br />
+    <textarea id="description" name="description" required></textarea><br />
+    <label for="category">Category:</label>
+    <select id="category" name="category">
+      <option value="Road">Road</option>
+      <option value="Water">Water</option>
+      <option value="Sanitation">Sanitation</option>
+    </select><br />
+    <input type="hidden" id="latitude" name="latitude" />
+    <input type="hidden" id="longitude" name="longitude" />
+    <button type="submit">Submit</button>
+  </form>
+  <script src="/static/js/main.js"></script>
+</body>
+</html>

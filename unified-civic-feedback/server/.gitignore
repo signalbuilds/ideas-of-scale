@@ -1,0 +1,6 @@
+# Binaries and build artifacts
+/server/ucffi-server
+/server/bin/
+
+# Docker-related
+**/db_data

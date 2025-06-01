@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UCFFI Dashboard</title>
+  <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <h1>UCFFI - Program Dashboard</h1>
+    <div id="kpi-cards">
+      <!-- KPI cards will be injected here by JS -->
+    </div>
+  </div>
+  <script>
+    async function fetchMetrics() {
+      const res = await fetch('/api/metrics');
+      return res.json();
+    }
+
+    function renderKPIs(data) {
+      const container = document.getElementById('kpi-cards');
+      container.innerHTML = `
+        <div class="kpi-card">
+          <h2>Total Issues</h2>
+          <div class="kpi-value">${data.total_issues}</div>
+        </div>
+        <div class="kpi-card">
+          <h2>Pending Issues</h2>
+          <div class="kpi-value">${data.pending_issues}</div>
+        </div>
+        <div class="kpi-card">
+          <h2>Resolved Issues</h2>
+          <div class="kpi-value">${data.resolved_issues}</div>
+        </div>
+      `;
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const metrics = await fetchMetrics();
+      renderKPIs(metrics);
+    });
+  </script>
+</body>
+</html>
