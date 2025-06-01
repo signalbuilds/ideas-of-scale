@@ -3,17 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UCFFI - Track Issue</title>
+  <title>UCFFI – Track Issue Status</title>
+
+  <!-- Just include your app’s CSS & JS—no Leaflet needed here -->
   <link rel="stylesheet" href="/static/css/styles.css" />
+  <script defer src="/static/js/main.js"></script>
 </head>
 <body>
   <h1>Track Your Issue</h1>
+
+  <!-- Status lookup form -->
   <form id="status-form">
     <label for="issue-id">Issue ID:</label>
     <input type="text" id="issue-id" name="issue-id" required />
     <button type="submit">Check Status</button>
   </form>
+
+  <!-- Container where status info will be displayed -->
   <div id="status-result"></div>
-  <script src="/static/js/main.js"></script>
 </body>
 </html>

@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
@@ -13,13 +14,24 @@ import (
 )
 
 // Issue represents a civic feedback ticket
+//
+//	type Issue struct {
+//		gorm.Model
+//		Description string  `json:"description"`
+//		Latitude    float64 `json:"latitude"`
+//		Longitude   float64 `json:"longitude"`
+//		Category    string  `json:"category"`
+//		Status      string  `json:"status"`
+//	}
 type Issue struct {
-	gorm.Model
-	Description string  `json:"description"`
-	Latitude    float64 `json:"latitude"`
-	Longitude   float64 `json:"longitude"`
-	Category    string  `json:"category"`
-	Status      string  `json:"status"`
+	ID          uint      `gorm:"primary_key" json:"id"`
+	Description string    `json:"description"`
+	Latitude    float64   `json:"latitude"`
+	Longitude   float64   `json:"longitude"`
+	Category    string    `json:"category"`
+	Status      string    `json:"status"`
+	CreatedAt   time.Time `json:"created_at"`
+	UpdatedAt   time.Time `json:"updated_at"`
 }
 
 var (

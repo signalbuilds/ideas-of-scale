@@ -3,27 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CUFFI - Submit Issue</title>
+  <title>UCFFI – Submit Issue</title>
+
+  <!-- 1. Leaflet CSS (no integrity/​crossorigin to eliminate potential loading issues) -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <!-- 2. Application CSS -->
   <link rel="stylesheet" href="/static/css/styles.css" />
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <!-- 3. Leaflet JS (load BEFORE your main.js) -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- 4. Application JS (deferred so it runs after DOM + Leaflet load) -->
+  <script defer src="/static/js/main.js"></script>
 </head>
+
 <body>
   <h1>Report a Civic Issue</h1>
-  <div id="map" style="height: 300px;"></div>
+
+  <!-- Map container: must have an explicit height (CSS already gives it 300px) -->
+  <div id="map"></div>
+
+  <!-- Issue submission form -->
   <form id="issue-form">
-    <label for="description">Description:</label><br />
-    <textarea id="description" name="description" required></textarea><br />
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea>
+
     <label for="category">Category:</label>
     <select id="category" name="category">
       <option value="Road">Road</option>
       <option value="Water">Water</option>
       <option value="Sanitation">Sanitation</option>
-    </select><br />
+      <option value="Other">Other</option>
+    </select>
+
+    <!-- Hidden inputs for latitude/longitude -->
     <input type="hidden" id="latitude" name="latitude" />
     <input type="hidden" id="longitude" name="longitude" />
-    <button type="submit">Submit</button>
+
+    <button type="submit">Submit Issue</button>
   </form>
-  <script src="/static/js/main.js"></script>
 </body>
 </html>
